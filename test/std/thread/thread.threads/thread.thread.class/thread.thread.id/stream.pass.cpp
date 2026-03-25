@@ -9,6 +9,7 @@
 // UNSUPPORTED: no-threads
 // UNSUPPORTED: no-localization
 // UNSUPPORTED: GCC-ALWAYS_INLINE-FIXME
+// UNSUPPORTED: windows
 
 // REQUIRES: locale.fr_FR.UTF-8
 

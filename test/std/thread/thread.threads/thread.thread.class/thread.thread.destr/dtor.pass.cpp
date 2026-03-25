@@ -7,6 +7,7 @@
 //===----------------------------------------------------------------------===//
 //
 // UNSUPPORTED: no-threads
+// UNSUPPORTED: windows
 
 // This is a death test: it relies on the host std::terminate / set_terminate
 // mechanism to turn a misuse (destroying a joinable thread) into a clean

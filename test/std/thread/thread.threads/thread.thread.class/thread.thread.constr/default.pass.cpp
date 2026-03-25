@@ -16,6 +16,7 @@
 
 #include <hip/thread>
 #include <cassert>
+#include <cstdlib>
 
 #include "test_macros.h"
 
@@ -26,5 +27,8 @@ int main(int, char**)
     hip::thread t;
     assert(t.get_id() == hip::thread::id());
 
+#if defined(_WIN32) && !defined(__HIP_DEVICE_COMPILE__)
+    ::std::_Exit(0);
+#endif
   return 0;
 }

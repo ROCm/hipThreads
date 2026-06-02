@@ -23,6 +23,10 @@
 // For cuda::std::__cccl_thread_sleep_for / cuda::std::__libcpp_thread_sleep_for(__ns)
 #include <hip/std/atomic>
 
+#ifndef HIPTHREADS_CONCURRENCY_MULTIPLIER
+#define HIPTHREADS_CONCURRENCY_MULTIPLIER 16
+#endif
+
 namespace cuda {
 
 enum {
@@ -685,7 +689,7 @@ __host__ unsigned int thread::hardware_concurrency() noexcept {
             return temp;
         }();
         // TODO: Make this multiplier configurable
-        return multiprocessorCount * 16;
+        return multiprocessorCount * HIPTHREADS_CONCURRENCY_MULTIPLIER;
     }
     catch (...) {
         ::std::cerr << "Exception while fetching multiprocessorCount\n";

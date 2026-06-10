@@ -23,8 +23,8 @@
 // For cuda::std::__cccl_thread_sleep_for / cuda::std::__libcpp_thread_sleep_for(__ns)
 #include <hip/std/atomic>
 
-#ifndef HIPTHREADS_CONCURRENCY_MULTIPLIER
-#define HIPTHREADS_CONCURRENCY_MULTIPLIER 16
+#ifndef HIPTHREADS_VCORES_PER_WGP
+#define HIPTHREADS_VCORES_PER_WGP 16
 #endif
 
 namespace cuda {
@@ -688,8 +688,7 @@ __host__ unsigned int thread::hardware_concurrency() noexcept {
             // __LIBHIPTHREADS_HIP_CHECK__(hipDeviceGetAttribute(&physicalMultiProcessorCount, hipDeviceAttributePhysicalMultiProcessorCount, 0));
             return temp;
         }();
-        // TODO: Make this multiplier configurable
-        return multiprocessorCount * HIPTHREADS_CONCURRENCY_MULTIPLIER;
+        return multiprocessorCount * HIPTHREADS_VCORES_PER_WGP;
     }
     catch (...) {
         ::std::cerr << "Exception while fetching multiprocessorCount\n";

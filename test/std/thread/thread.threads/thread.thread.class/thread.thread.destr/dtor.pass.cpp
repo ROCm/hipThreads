@@ -8,6 +8,15 @@
 //
 // UNSUPPORTED: no-threads
 
+// This is a death test: it relies on the host std::terminate / set_terminate
+// mechanism to turn a misuse (destroying a joinable thread) into a clean
+// _Exit(0). That mechanism does not exist in GPU device code: there is no
+// device-side terminate handler, and a device abort surfaces as an HSA hardware
+// exception whose host exit code is not stable across runtimes (observed exit 0
+// on RDNA/Linux but nonzero on CDNA/Linux and Windows). So this contract cannot
+// be verified through an exit code on the GPU. Skip unconditionally.
+// UNSUPPORTED: true
+
 
 // <thread>
 

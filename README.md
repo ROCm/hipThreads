@@ -1,7 +1,9 @@
 # hipThreads : C++-style concurrency library for AMD GPUs
 
-> [!CAUTION]
-> This release is an *early-access* software technology preview. Running production workloads is *not* recommended.
+> [!WARNING]
+> **This repository is deprecated.** hipThreads has moved to [ROCm/rocm-libraries](https://github.com/ROCm/rocm-libraries/tree/develop/projects/hipthreads). All issues and development now happen there.
+>
+> Documentation is available at https://rocm.docs.amd.com/projects/hipThreads/en/latest/
 
 ## Introduction
 

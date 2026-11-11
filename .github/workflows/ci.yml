@@ -25,7 +25,7 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       
     - name: Clean previous artifacts
       run: |
@@ -289,7 +289,7 @@ jobs:
         
     - name: Upload build artifacts on failure
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: build-logs-${{ github.sha }}
         path: |

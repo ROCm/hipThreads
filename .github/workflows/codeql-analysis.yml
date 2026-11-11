@@ -17,7 +17,7 @@ jobs:
         
         steps:
         -   name: Checkout repository
-            uses: actions/checkout@v4
+            uses: actions/checkout@v7
         
         -   name: Install Dependencies
             run: |
@@ -47,7 +47,7 @@ jobs:
                 ls -la /opt/rocm/include/hip/std/ || echo "Warning: libhipcxx headers not found"
             
         -   name: Initialize CodeQL
-            uses: github/codeql-action/init@v3
+            uses: github/codeql-action/init@v4
             with:
                 languages: cpp
                 queries: ./codeql-amd-checks.qls
@@ -58,6 +58,6 @@ jobs:
                 cmake --build build
             
         -   name: Perform CodeQL Analysis
-            uses: github/codeql-action/analyze@v3
+            uses: github/codeql-action/analyze@v4
             with:
                 category: "/language:cpp"
